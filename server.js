@@ -10,12 +10,9 @@ const app = express();
 
 // CORS Configuration
 app.use(cors({
-  origin: [
-    "http://localhost:3000",
-    "https://rebellohealth.co.uk",
-    "https://rebellohealth-frontend.vercel.app"
-  ],
-  methods: ["GET", "POST", "PUT", "DELETE"],
+  origin: function (origin, callback) {
+    callback(null, true);
+  },
   credentials: true
 }));
 
