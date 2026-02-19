@@ -1,15 +1,26 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
 
-// Middleware
+// CORS Configuration
 app.use(cors({
-  origin: ["http://localhost:3000", "https://rebellohealth-frontend.vercel.app"],
+  origin: [
+    "http://localhost:3000",
+    "https://rebellohealth.co.uk",
+    "https://rebellohealth-frontend.vercel.app"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
+
+// Middleware
+app.use(express.json());
 app.use(express.json());
 app.use("/api/auth", require("./routes/authRoutes"));
 
